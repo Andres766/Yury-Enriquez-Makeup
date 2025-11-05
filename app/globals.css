@@ -10,6 +10,17 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Gold palette (aligned to logo tones) */
+  --gold-50: #faf6e8;
+  --gold-100: #f3ead0;
+  --gold-200: #e6d2a7;
+  --gold-300: #d9bb7a;
+  --gold-400: #cfae58;
+  --gold-500: #d4af37; /* primary gold */
+  --gold-600: #c19c2f;
+  --gold-700: #a88325;
+  --gold-800: #8c6c1f;
+  --gold-900: #755a1a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +34,43 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- Animated Logo styles --- */
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.shimmer-bar {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+  transform: translateX(-120%);
+  mix-blend-mode: screen;
+  animation: shimmer 2.8s ease-in-out infinite;
+}
+
+.stroke-draw {
+  stroke-dasharray: 534;
+  stroke-dashoffset: 534;
+  animation: drawStroke 2.2s ease forwards, glow 3.5s ease-in-out infinite 2.2s;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+@keyframes drawStroke {
+  0% { stroke-dashoffset: 534; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(245, 158, 11, 0)); }
+  50% { filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.5)); }
 }
